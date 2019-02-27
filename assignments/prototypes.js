@@ -152,6 +152,7 @@ Humanoid.prototype.greet = function() {
   Hero.prototype = Object.create(Humanoid.prototype)
   Hero.prototype.slash = function(character) {
     let oldHP = character.healthPoints;
+    console.log(`${this.name} attacks!`);
     character.healthPoints -= 10;
     console.log(character.takeDamage());
     console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`)
@@ -169,6 +170,7 @@ Humanoid.prototype.greet = function() {
   Villain.prototype = Object.create(Humanoid.prototype);
   Villain.prototype.armaggedon = function(character) {
     let oldHP = character.healthPoints;
+    console.log(`${this.name} attacks!`);
     character.healthPoints -= 1000;
     console.log(character.takeDamage());
     console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`);
@@ -186,12 +188,12 @@ Humanoid.prototype.greet = function() {
     },
     healthPoints: 10,
     name: 'Legolas',
-    team: 'Forest Kingdom',
+    team: 'Woodland Realm',
     weapons: [
       'Bow',
       'Dagger',
     ],
-    language: 'Elvish',
+    language: 'Elvish (Sindarin)',
   });
 
   const skeletor = new Villain({
