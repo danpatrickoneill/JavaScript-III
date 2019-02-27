@@ -153,6 +153,7 @@ Humanoid.prototype.greet = function() {
   Hero.prototype.slash = function(character) {
     let oldHP = character.healthPoints;
     character.healthPoints -= 10;
+    console.log(character.takeDamage());
     console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`)
     if (character.healthPoints <= 0) {
       console.log(character.destroy())
@@ -169,7 +170,8 @@ Humanoid.prototype.greet = function() {
   Villain.prototype.armaggedon = function(character) {
     let oldHP = character.healthPoints;
     character.healthPoints -= 1000;
-    console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`)
+    console.log(character.takeDamage());
+    console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`);
     if (character.healthPoints <= 0) {
       console.log(character.destroy())
     }
