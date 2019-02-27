@@ -155,6 +155,9 @@ Humanoid.prototype.greet = function() {
     console.log(`${this.name} attacks!`);
     character.healthPoints -= 10;
     console.log(character.takeDamage());
+    if ((Math.random() * 20) > 15) {
+      character.healthPoints -= 10;
+      console.log("Critical hit!")}
     console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`)
     if (character.healthPoints <= 0) {
       console.log(character.destroy())
