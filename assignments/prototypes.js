@@ -143,4 +143,73 @@ Humanoid.prototype.greet = function() {
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
 
-  console.log(swordsman)
+  function Hero(attributes) {
+    Humanoid.call(this, attributes);
+
+    this.alignment = "good";
+  }
+
+  Hero.prototype = Object.create(Humanoid.prototype)
+  Hero.prototype.slash = function(character) {
+    let oldHP = character.healthPoints;
+    character.healthPoints -= 10;
+    console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`)
+    if (character.healthPoints <= 0) {
+      console.log(character.destroy())
+    }
+  }
+
+  function Villain(attributes) {
+    Humanoid.call(this, attributes);
+
+    this.alignment = "evil";  
+ }
+
+  Villain.prototype = Object.create(Humanoid.prototype);
+  Villain.prototype.armaggedon = function(character) {
+    let oldHP = character.healthPoints;
+    character.healthPoints -= 1000;
+    console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`)
+    if (character.healthPoints <= 0) {
+      console.log(character.destroy())
+    }
+  }
+
+ const legolas = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 2,
+      height: 4,
+    },
+    healthPoints: 10,
+    name: 'Legolas',
+    team: 'Forest Kingdom',
+    weapons: [
+      'Bow',
+      'Dagger',
+    ],
+    language: 'Elvish',
+  });
+
+  const skeletor = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+      length: 10,
+      width: 20,
+      height: 40,
+    },
+    healthPoints: 100,
+    name: 'Skeletor',
+    team: 'Hell',
+    weapons: [
+      'Fire',
+      'Brimstone',
+    ],
+    language: 'Death',
+  });
+
+  legolas.slash(skeletor)
+  legolas.slash(skeletor)
+  legolas.slash(skeletor)
+  skeletor.armaggedon(legolas)
