@@ -151,12 +151,13 @@ Humanoid.prototype.greet = function() {
 
   Hero.prototype = Object.create(Humanoid.prototype)
   Hero.prototype.slash = function(character) {
+    const damage = 10;
     let oldHP = character.healthPoints;
     console.log(`${this.name} attacks!`);
-    character.healthPoints -= 10;
+    character.healthPoints -= damage;
     console.log(character.takeDamage());
     if ((Math.random() * 20) > 15) {
-      character.healthPoints -= 10;
+      character.healthPoints -= damage;
       console.log("Critical hit!")}
     console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`)
     if (character.healthPoints <= 0) {
@@ -172,9 +173,10 @@ Humanoid.prototype.greet = function() {
 
   Villain.prototype = Object.create(Humanoid.prototype);
   Villain.prototype.armaggedon = function(character) {
+    const damage = 1000;
     let oldHP = character.healthPoints;
     console.log(`${this.name} attacks!`);
-    character.healthPoints -= 1000;
+    character.healthPoints -= damage;
     console.log(character.takeDamage());
     console.log(`${character.name} went from ${oldHP} HP to ${character.healthPoints}!`);
     if (character.healthPoints <= 0) {
